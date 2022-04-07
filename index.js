@@ -1,18 +1,23 @@
 //define constants
 const maxGuesses = 10;
-
+const apiURL = "https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new";
 
 //define variable elements
 let guessesCount = 0;
 let currentGuess = [];
 let prevousGuesses = [];
-
-init();
-
-function init(){
-    let correctAnswer; //API call to store random number sequence
-    //reset variables for window refresh?
+let scoreCount = {
+    wins: 0,
+    losses: 0,
 }
+
+async function getRandomNumbers(url){
+    axios.get("https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new")
+    .then((response) => {
+        console.log(response.data)
+    })
+}
+
 
 function winLoss(){
     if (guessesCount === maxGuesses){
