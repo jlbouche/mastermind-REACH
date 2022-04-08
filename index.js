@@ -51,20 +51,27 @@ function startGame(){
     getRandomNumbers();
 }
 
+function resetValues(){
+    randomNumbers = []
+    previousGuesses = []
+    previousMatches = []
+    currentGuess = [];
+    guessesCount = 0;
+    previousGuessesDisplay.innerHTML = previousGuesses;
+    previousMatchesDisplay.innerHTML = previousMatches;
+}
+
 function winLoss(){
     console.log(currentGuess, randomNumbers)
     if (currentGuess.every((val, idx) => val === randomNumbers[idx])){
         //won game modal
         console.log('hitting winLoss won game condition')
-        randomNumbers = []
-        previousGuesses = []
-        previousMatches = []
-        currentGuess = [];
+        resetValues();
     } else if (guessesCount === maxGuesses){
         //lost game modal
         console.log('hitting winLoss lost game condition')
+        resetValues();
     } else {
-        
         console.log(`this is previousMatches ${previousMatches}`)
         previousGuesses.push(currentGuess);
         console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
