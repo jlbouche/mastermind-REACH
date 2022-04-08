@@ -7,6 +7,7 @@ const numbers = document.querySelectorAll(".number")
 let randomNumbers = [];
 let guessesCount = 0;
 let currentGuess = [];
+let currentMatch = [];
 let previousGuesses = [];
 let previousMatches = [];
 let guessMatch = [];
@@ -49,6 +50,7 @@ function guessAnswer(guess){
 
 function startGame(){
     getRandomNumbers();
+    resetValues();
 }
 
 function resetValues(){
@@ -74,6 +76,7 @@ function winLoss(){
     } else {
         console.log(`this is previousMatches ${previousMatches}`)
         previousGuesses.push(currentGuess);
+        previousMatches.push(currentMatch);
         console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
         previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
         previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
