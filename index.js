@@ -59,7 +59,7 @@ function winLoss(){
     } else {
         previousGuesses.push(currentGuess);
         console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
-        previousGuessesDisplay.textContent = previousGuesses;
+        previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
         currentGuess = [];
     }
 }
