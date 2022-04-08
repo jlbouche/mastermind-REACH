@@ -12,6 +12,7 @@ let scoreCount = {
     wins: 0,
     losses: 0,
 }
+let previousGuessesDisplay = document.getElementById("previous-guess")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
@@ -58,6 +59,7 @@ function winLoss(){
     } else {
         previousGuesses.push(currentGuess);
         console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
+        previousGuessesDisplay.textContent = previousGuesses;
         currentGuess = [];
     }
 }
