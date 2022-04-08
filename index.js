@@ -8,11 +8,14 @@ let randomNumbers = [];
 let guessesCount = 0;
 let currentGuess = [];
 let previousGuesses = [];
+let previousMatches = [];
+let guessMatch = [];
 let scoreCount = {
     wins: 0,
     losses: 0,
 }
 let previousGuessesDisplay = document.getElementById("previous-guess")
+let previousMatchesDisplay = document.getElementById("previous-match")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
@@ -53,13 +56,20 @@ function winLoss(){
     if (currentGuess.every((val, idx) => val === randomNumbers[idx])){
         //won game modal
         console.log('hitting winLoss won game condition')
+        randomNumbers = []
+        previousGuesses = []
+        previousMatches = []
+        currentGuess = [];
     } else if (guessesCount === maxGuesses){
         //lost game modal
         console.log('hitting winLoss lost game condition')
     } else {
+        
+        console.log(`this is previousMatches ${previousMatches}`)
         previousGuesses.push(currentGuess);
         console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
         previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
+        previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
         currentGuess = [];
     }
 }
