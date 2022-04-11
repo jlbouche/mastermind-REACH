@@ -1,5 +1,6 @@
 //define constants
 const startNewGame = document.getElementById('start-game');
+const playAgain = document.getElementById('play-again');
 const maxGuesses = 10;
 const numbers = document.querySelectorAll(".number")
 
@@ -20,6 +21,8 @@ let previousMatchesDisplay = document.getElementById("previous-match")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
+playAgain.addEventListener('click', startGame)
+
 for (let number of numbers){
     let guess = number.innerHTML
     number.addEventListener('click', () => guessAnswer(guess));
@@ -66,17 +69,18 @@ function resetValues(){
 function winLoss(){
     console.log(currentGuess, randomNumbers)
     if (currentGuess.every((val, idx) => val === randomNumbers[idx])){
-        //won game modal
+        $('#victoryModal').modal({show:true});
         console.log('hitting winLoss won game condition')
         resetValues();
     } else if (guessesCount === maxGuesses){
         //lost game modal
+        alert('Sorry, you lost!')
         console.log('hitting winLoss lost game condition')
         resetValues();
     } else {
+        
         console.log(`this is previousMatches ${previousMatches}`)
         previousGuesses.push(currentGuess);
-        previousMatches.push(currentMatch);
         console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
         previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
         previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
