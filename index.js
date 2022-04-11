@@ -22,7 +22,6 @@ let previousMatchesDisplay = document.getElementById("previous-match")
 //event listeners
 startNewGame.addEventListener('click', startGame);
 playAgain.addEventListener('click', startGame)
-
 for (let number of numbers){
     let guess = number.innerHTML
     number.addEventListener('click', () => guessAnswer(guess));
@@ -41,13 +40,15 @@ async function getRandomNumbers(){
 }
 
 function guessAnswer(guess){
-    currentGuess.push(parseInt(guess))
-    console.log(currentGuess)
-    console.log(`hitting guessAnswer function pre 4 guesses, currentGuess updated to ${currentGuess}`)
-    if (currentGuess.length === 4){
-        guessesCount++;
-        console.log(`hitting guessAnswer conditional of 4 numbers in guess, guessesCount now ${guessesCount}`)
-        winLoss();
+    if (randomNumbers.length > 0){
+        currentGuess.push(parseInt(guess))
+        console.log(currentGuess)
+        console.log(`hitting guessAnswer function pre 4 guesses, currentGuess updated to ${currentGuess}`)
+        if (currentGuess.length === 4){
+            guessesCount++;
+            console.log(`hitting guessAnswer conditional of 4 numbers in guess, guessesCount now ${guessesCount}`)
+            winLoss();
+        }
     }
 }
 
