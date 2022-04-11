@@ -47,7 +47,7 @@ function guessAnswer(guess){
         if (currentGuess.length === 4){
             guessesCount++;
             console.log(`hitting guessAnswer conditional of 4 numbers in guess, guessesCount now ${guessesCount}`)
-            winLoss();
+            checkGameState();
         }
     }
 }
@@ -67,22 +67,22 @@ function resetValues(){
     previousMatchesDisplay.innerHTML = previousMatches;
 }
 
-function winLoss(){
+function checkGameState(){
     console.log(currentGuess, randomNumbers)
     if (currentGuess.every((val, idx) => val === randomNumbers[idx])){
         $('#victoryModal').modal({show:true});
-        console.log('hitting winLoss won game condition')
+        console.log('hitting checkGameState won game condition')
         resetValues();
     } else if (guessesCount === maxGuesses){
         //lost game modal
         $('#lostModal').modal({show:true});
-        console.log('hitting winLoss lost game condition')
+        console.log('hitting checkGameState lost game condition')
         resetValues();
     } else {
         
         console.log(`this is previousMatches ${previousMatches}`)
         previousGuesses.push(currentGuess);
-        console.log(`hitting winLoss add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
+        console.log(`hitting checkGameState add history of guesses, previousGuesses updated to: ${previousGuesses} and guessesCount increased to ${guessesCount}`)
         previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
         previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
         currentGuess = [];
