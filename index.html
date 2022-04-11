@@ -17,6 +17,7 @@
     <script defer src="index.js"></script>
 </head>
 <body>
+    
     <div id="game-board">
         <button id="start-game">Start Game</button>
         <div class="row numbers">
@@ -39,6 +40,11 @@
             </div>
         </div>
     </div>
+    <!--Modals-->
+
+    <!--How to Play Modal-->
+
+    <!--Victory Modal-->
     <div class="modal fade" id="victoryModal" tabindex="-1" role="dialog" aria-labelledby="victoryTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -50,6 +56,26 @@
             </div>
             <div class="modal-body">
             Congratulations you mastermind, you figured out the code!
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="play-again" data-dismiss="modal">Play again?</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--Lost Modal-->
+    <div class="modal fade" id="lostModal" tabindex="-1" role="dialog" aria-labelledby="lostTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="lostTitle">You lost.</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                Sorry friend, maybe you'll win next time!
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -74,7 +74,7 @@ function winLoss(){
         resetValues();
     } else if (guessesCount === maxGuesses){
         //lost game modal
-        alert('Sorry, you lost!')
+        $('#lostModal').modal({show:true});
         console.log('hitting winLoss lost game condition')
         resetValues();
     } else {
