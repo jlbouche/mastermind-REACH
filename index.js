@@ -32,7 +32,6 @@ for (let number of numbers){
     number.addEventListener('click', () => guessAnswer(guess));
 }
 
-
 //functions
 winHistory.innerText = localStorage.getItem("win_count")
 lossHistory.innerText = localStorage.getItem("loss_count")
@@ -86,22 +85,22 @@ function displayHistory(){
     //add currentGuess array to previousGuesses, currentMatch to previousMatches
     previousGuesses.push(currentGuess);
     //conditional values in currentGuess compared to randomNumbers
-    currentGuess.forEach((num, idx) => {
-        if (randomNumbers[idx] === num){
+    randomNumbers.forEach((num, idx) => {
+        if (currentGuess[idx] === num){
             currentMatch.push(full)
-        } else if (randomNumbers.includes(num)){
+        } else if (currentGuess.includes(num)){
             currentMatch.push(half)
         } else {
             currentMatch.push(empty)
         }
     })
     previousMatches.push(currentMatch);
+    //reset currentGuess/Match for next guess input
+    currentGuess = [];
+    currentMatch = [];
     //change display to show updated previousGuesses and Matches
     previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
     previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
-    //reset currentGuess for next guess input
-    currentGuess = [];
-    currentMatch = [];
 }
 
 function checkGameState(){
