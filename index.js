@@ -82,8 +82,6 @@ function resetValues(){
 }
 
 function displayHistory(){
-    //add currentGuess array to previousGuesses, currentMatch to previousMatches
-    previousGuesses.push(currentGuess);
     //conditional values in currentGuess compared to randomNumbers
     randomNumbers.forEach((num, idx) => {
         if (currentGuess[idx] === num){
@@ -94,7 +92,9 @@ function displayHistory(){
             currentMatch.push(empty)
         }
     })
-    previousMatches.push(currentMatch);
+    //add currentGuess array to previousGuesses, currentMatch to previousMatches
+    previousGuesses.push(currentGuess.join(' '));
+    previousMatches.push(currentMatch.join(' '));
     //reset currentGuess/Match for next guess input
     currentGuess = [];
     currentMatch = [];
