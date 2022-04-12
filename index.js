@@ -92,6 +92,7 @@ function displayHistory(){
             currentMatch.push(empty)
         }
     })
+    currentMatch.sort().reverse();
     //add currentGuess array to previousGuesses, currentMatch to previousMatches
     previousGuesses.push(currentGuess.join(' '));
     previousMatches.push(currentMatch.join(' '));
