@@ -73,6 +73,7 @@ function resetValues(){
     previousGuesses = []
     previousMatches = []
     currentGuess = [];
+    currentMatch = [];
     guessesCount = 0;
     previousGuessesDisplay.innerHTML = previousGuesses;
     previousMatchesDisplay.innerHTML = previousMatches;
@@ -84,18 +85,20 @@ function displayHistory(){
     //conditional values in currentGuess compared to randomNumbers
     currentGuess.forEach((num, idx) => {
         if (randomNumbers[idx] === num){
-            previousMatches.push('full')
+            currentMatch.push('full')
         } else if (randomNumbers.includes(num)){
-            previousMatches.push('half')
+            currentMatch.push('half')
         } else {
-            previousMatches.push('empty')
+            currentMatch.push('empty')
         }
     })
+    previousMatches.push(currentMatch);
     //change display to show updated previousGuesses and Matches
     previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
-    previousMatchesDisplay.innerHTML = previousMatches;
+    previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
     //reset currentGuess for next guess input
     currentGuess = [];
+    currentMatch = [];
 }
 
 function checkGameState(){
