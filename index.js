@@ -5,8 +5,6 @@ const maxGuesses = 10;
 const numbers = document.querySelectorAll(".number")
 
 //define variable values
-let winCount = 0;
-let lossCount = 0;
 let randomNumbers = [];
 let guessesCount = 0;
 let currentGuess = [];
@@ -14,6 +12,8 @@ let currentMatch = [];
 let previousGuesses = [];
 let previousMatches = [];
 let guessMatch = [];
+let winCount = 0;
+let lossCount = 0;
 
 //get elements by id
 let winHistory = document.getElementById("win-history")
@@ -35,17 +35,14 @@ winHistory.innerText = localStorage.getItem("win_count")
 lossHistory.innerText = localStorage.getItem("loss_count")
 
 async function getRandomNumbers(){
-    //api call
     axios.get("https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new")
         .then((response) => {
-            //data comes as string, splitting into array to filter
             let data = response.data.split("");
-            //removing \n that comes from plain text from api pull
             let stringNumbers = data.filter(el => el !== '\n')
-            //mapping through array to change numbers from string to integers
             randomNumbers = stringNumbers.map(function (x){
                 return parseInt(x);
             })
+            console.log(randomNumbers)
         })
 }
 
@@ -53,6 +50,7 @@ function guessAnswer(guess){
     //first only allow number eventListener to work if we have randomNumbers
     if (randomNumbers.length > 0){
         currentGuess.push(parseInt(guess))
+        console.log(currentGuess)
         //don't want to run the below before we hit 4 numbers in guess
         if (currentGuess.length === 4){
             //increase number of guesses by 1
@@ -88,7 +86,7 @@ function checkGameState(){
         $('#victoryModal').modal({show:true});
         //increase winCount by 1
         winCount++;
-        //update localStorage for updated winCount
+        // //update localStorage for updated winCount
         localStorage.setItem("win_count", winCount)
         //reset values for new game
         resetValues();
@@ -98,7 +96,7 @@ function checkGameState(){
         $('#lostModal').modal({show:true});
         //increase lossCount by 1
         lossCount++;
-        //update localStorage for updated lossCount
+        // //update localStorage for updated lossCount
         localStorage.setItem("loss_count", lossCount)
         //reset values for new game
         resetValues();
@@ -106,9 +104,19 @@ function checkGameState(){
     } else {
         //add currentGuess array to previousGuesses, currentMatch to previousMatches
         previousGuesses.push(currentGuess);
+        //conditional values in currentGuess compared to randomNumbers
+        currentGuess.forEach((num, idx) => {
+            if (randomNumbers[idx] === num){
+                previousMatches.push('full')
+            } else if (randomNumbers.includes(num)){
+                previousMatches.push('half')
+            } else {
+                previousMatches.push('empty')
+            }
+        })
         //change display to show updated previousGuesses and Matches
         previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
-        previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
+        previousMatchesDisplay.innerHTML = previousMatches;
         //reset currentGuess for next guess input
         currentGuess = [];
     }
