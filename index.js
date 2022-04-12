@@ -3,6 +3,9 @@ const startNewGame = document.getElementById('start-game');
 const playAgain = document.getElementById('play-again');
 const maxGuesses = 10;
 const numbers = document.querySelectorAll(".number")
+const full = '⚫'
+const half = '🔴'
+const empty = '⚪'
 
 //define variable values
 let randomNumbers = [];
@@ -85,11 +88,11 @@ function displayHistory(){
     //conditional values in currentGuess compared to randomNumbers
     currentGuess.forEach((num, idx) => {
         if (randomNumbers[idx] === num){
-            currentMatch.push('full')
+            currentMatch.push(full)
         } else if (randomNumbers.includes(num)){
-            currentMatch.push('half')
+            currentMatch.push(half)
         } else {
-            currentMatch.push('empty')
+            currentMatch.push(empty)
         }
     })
     previousMatches.push(currentMatch);
