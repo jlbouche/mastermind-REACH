@@ -78,6 +78,26 @@ function resetValues(){
     previousMatchesDisplay.innerHTML = previousMatches;
 }
 
+function displayHistory(){
+    //add currentGuess array to previousGuesses, currentMatch to previousMatches
+    previousGuesses.push(currentGuess);
+    //conditional values in currentGuess compared to randomNumbers
+    currentGuess.forEach((num, idx) => {
+        if (randomNumbers[idx] === num){
+            previousMatches.push('full')
+        } else if (randomNumbers.includes(num)){
+            previousMatches.push('half')
+        } else {
+            previousMatches.push('empty')
+        }
+    })
+    //change display to show updated previousGuesses and Matches
+    previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
+    previousMatchesDisplay.innerHTML = previousMatches;
+    //reset currentGuess for next guess input
+    currentGuess = [];
+}
+
 function checkGameState(){
     console.log(currentGuess, randomNumbers)
     //first check if guess matches--as game is over with win until max is reached
@@ -102,22 +122,6 @@ function checkGameState(){
         resetValues();
     //finally, when guess is made that doesn't match but also haven't reached maxGuesses
     } else {
-        //add currentGuess array to previousGuesses, currentMatch to previousMatches
-        previousGuesses.push(currentGuess);
-        //conditional values in currentGuess compared to randomNumbers
-        currentGuess.forEach((num, idx) => {
-            if (randomNumbers[idx] === num){
-                previousMatches.push('full')
-            } else if (randomNumbers.includes(num)){
-                previousMatches.push('half')
-            } else {
-                previousMatches.push('empty')
-            }
-        })
-        //change display to show updated previousGuesses and Matches
-        previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
-        previousMatchesDisplay.innerHTML = previousMatches;
-        //reset currentGuess for next guess input
-        currentGuess = [];
+        displayHistory();
     }
 }
