@@ -1,4 +1,4 @@
-#game-board{
+.container{
     text-align: center;
     flex-wrap: wrap;
 }
@@ -17,12 +17,13 @@
 
 #previous-guesses {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
 }
 
 .previous-guess {
     width: 50px;
     height: 50px;
+    border-style: outset;
 }
 
 #previous-matches {
@@ -33,4 +34,5 @@
 .previous-match {
     width: 50px;
     height: 50px;
+    border-style: outset;
 }

@@ -23,15 +23,10 @@
         <p>Games won: <span id="win-history"></span></p>
         <p>Games lost: <span id="loss-history"></span></p>
     </div>
-    <button id="start-game">Start Game</button>
-    <div class="container" id="game-board">
-        <h3>Previous Guesses:</h3>
-        <div class="row" id="previous-guesses">
-        </div>
-        <div class="row" id="previous-matches">
-        </div>
+    <div class="container">
+        <button id="start-game">Start Game</button>
         <h3>Current Guess: </h3>
-        <div id="current-guess">Select a number to start!</div>
+        <div id="current-guess">Press 'Start Game' to guess the sequence!</div>
         <div class="btn-toolbar numbers" role="group" aria-label="...">
             <div class="btn-group">
                 <button type="button" class="btn btn-outline-secondary number">0</button>
@@ -51,6 +46,13 @@
                 <button type="button" class="btn btn-outline-secondary number">6</button>
                 <button type="button" class="btn btn-outline-secondary number">7</button>
                 <button type="button" class="btn btn-outline-secondary" id="backspace">x</button>
+            </div>
+        </div>
+        <div id="game-board">
+            <h3>Previous Guesses:</h3>
+            <div class="row" id="previous-guesses">
+            </div>
+            <div class="row" id="previous-matches">
             </div>
         </div>
     </div>

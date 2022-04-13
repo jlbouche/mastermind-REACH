@@ -85,8 +85,7 @@ function deleteGuess(){
 function startGame(){
     //get random numbers first
     getRandomNumbers();
-    //make sure no variables stored from last game
-    resetValues();
+    //double-check values reset
 }
 
 function resetValues(){
@@ -96,8 +95,8 @@ function resetValues(){
     currentGuess = [];
     currentMatch = [];
     guessesCount = 0;
-    previousGuessesDisplay.innerHTML = previousGuesses;
-    previousMatchesDisplay.innerHTML = previousMatches;
+    previousGuessesDisplay.innerHTML = ''
+    previousMatchesDisplay.innerHTML = ''
     currentGuessDisplay.innerHTML = currentGuess;
 }
 
@@ -124,13 +123,13 @@ function displayHistory(){
     previousMatchesDisplay.innerHTML = ''
     previousGuesses.forEach((elem) => {
         let guessDiv = document.createElement('div');
-        guessDiv.classList.add('col')
+        guessDiv.classList.add('col','previous-guess')
         guessDiv.textContent = elem;
         previousGuessesDisplay.appendChild(guessDiv)
     })
     previousMatches.forEach((elem) => {
         let matchDiv = document.createElement('div');
-        matchDiv.classList.add('col')
+        matchDiv.classList.add('col', 'previous-match')
         matchDiv.textContent = elem;
         previousMatchesDisplay.appendChild(matchDiv)
     })
