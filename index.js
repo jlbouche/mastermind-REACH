@@ -17,7 +17,6 @@ let lossCount = 0;
 
 //elements by id
 const startNewGame = document.getElementById('start-game');
-const playAgain = document.getElementById('play-again');
 const numbers = document.querySelectorAll(".number")
 let winHistory = document.getElementById("win-history")
 let lossHistory = document.getElementById("loss-history")
@@ -27,7 +26,6 @@ let previousMatchesDisplay = document.getElementById("previous-matches")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
-playAgain.addEventListener('click', startGame);
 for (let number of numbers){
     let guess = number.innerHTML
     number.addEventListener('click', () => guessAnswer(guess));
