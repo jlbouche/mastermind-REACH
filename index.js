@@ -21,8 +21,8 @@ let lossCount = 0;
 //get elements by id
 let winHistory = document.getElementById("win-history")
 let lossHistory = document.getElementById("loss-history")
-let previousGuessesDisplay = document.getElementById("previous-guess")
-let previousMatchesDisplay = document.getElementById("previous-match")
+let previousGuessesDisplay = document.getElementById("previous-guesses")
+let previousMatchesDisplay = document.getElementById("previous-matches")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
@@ -94,14 +94,26 @@ function displayHistory(){
     })
     currentMatch.sort().reverse();
     //add currentGuess array to previousGuesses, currentMatch to previousMatches
-    previousGuesses.push(currentGuess.join(' '));
-    previousMatches.push(currentMatch.join(' '));
+    previousGuesses.push(currentGuess.join(''));
+    previousMatches.push(currentMatch.join(''));
     //reset currentGuess/Match for next guess input
     currentGuess = [];
     currentMatch = [];
     //change display to show updated previousGuesses and Matches
-    previousGuessesDisplay.innerHTML = previousGuesses.join('<br>');
-    previousMatchesDisplay.innerHTML = previousMatches.join('<br>');
+    previousGuessesDisplay.innerHTML = ''
+    previousMatchesDisplay.innerHTML = ''
+    previousGuesses.forEach((elem) => {
+        let guessDiv = document.createElement('div');
+        guessDiv.classList.add('col')
+        guessDiv.textContent = elem;
+        previousGuessesDisplay.appendChild(guessDiv)
+    })
+    previousMatches.forEach((elem) => {
+        let matchDiv = document.createElement('div');
+        matchDiv.classList.add('col')
+        matchDiv.textContent = elem;
+        previousMatchesDisplay.appendChild(matchDiv)
+    })
 }
 
 function checkGameState(){

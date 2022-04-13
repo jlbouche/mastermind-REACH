@@ -14,11 +14,9 @@
 #previous-guesses {
     display: flex;
     justify-content: space-between;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
 }
 
-#previous-guess {
+.previous-guess {
     width: 50px;
     height: 50px;
 }
@@ -26,10 +24,9 @@
 #previous-matches {
     display: flex;
     justify-content: space-between;
-    writing-mode: vertical-lr;
 }
 
-#previous-match {
+.previous-match {
     width: 50px;
     height: 50px;
 }
