@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js" ></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -23,26 +24,47 @@
     </div>
     <button id="start-game">Start Game</button>
     <div class="container" id="game-board">
-        <div class="row text-center my-4 flex-wrap numbers">
-            <div class="col-3 py-1 number 0">0</div>
-            <div class="col-3 py-1 number 1">1</div>
-            <div class="col-3 py-1 number 2">2</div>
-            <div class="col-3 py-1 number 3">3</div>
-            <div class="col-3 py-1 number 4">4</div>
-            <div class="col-3 py-1 number 5">5</div>
-            <div class="col-3 py-1 number 6">6</div>
-            <div class="col-3 py-1 number 7">7</div>
-        </div>
         <h3>Previous Guesses:</h3>
-            <div class="row" id="previous-guesses">
-            </div>
-            <div class="row" id="previous-matches">
-            </div>
+        <div class="row" id="previous-guesses">
+        </div>
+        <div class="row" id="previous-matches">
+        </div>
+        <h3>Current Guess: </h3>
+        <div id="current-guess">Select a number to start!</div>
+    </div>
+    <div class="row text-center my-4 flex-wrap numbers">
+        <div class="col-3 py-1 number 0">0</div>
+        <div class="col-3 py-1 number 1">1</div>
+        <div class="col-3 py-1 number 2">2</div>
+        <div class="col-3 py-1 number 3">3</div>
+        <div class="w-100"></div>
+        <div class="col-3 py-1 number 4">4</div>
+        <div class="col-3 py-1 number 5">5</div>
+        <div class="col-3 py-1 number 6">6</div>
+        <div class="col-3 py-1 number 7">7</div>
     </div>
     <!--Modals-->
 
     <!--How to Play Modal-->
-
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="infoTitle">Welcome to Mastermind!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            Welcome to this remake of the classic puzzle game Mastermind, where you try to guess your opponent's secret code before your guesses run out. This game has a twist, though: your opponent is a computer! Try to guess the 4 digit combination in 10 tries or less, otherwise it's Game Over. Good luck!
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Let's get started!!</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!--Victory Modal-->
     <div class="modal fade" id="victoryModal" tabindex="-1" role="dialog" aria-labelledby="victoryTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

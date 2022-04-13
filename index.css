@@ -3,10 +3,11 @@
 }
 
 .numbers{
-    margin: 10px;
+    margin: 0px 850px 0px 40px;
+    cursor: pointer;
 }
 .number{
-    padding: 15px;
+    padding: 50px;
     align-items: center;
     border-style:outset;
 }

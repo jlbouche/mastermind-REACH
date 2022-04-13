@@ -1,13 +1,10 @@
-//define constants
-const startNewGame = document.getElementById('start-game');
-const playAgain = document.getElementById('play-again');
+//constants
 const maxGuesses = 10;
-const numbers = document.querySelectorAll(".number")
 const full = '⚫'
 const half = '🔴'
 const empty = '⚪'
 
-//define variable values
+//variable values
 let randomNumbers = [];
 let guessesCount = 0;
 let currentGuess = [];
@@ -18,15 +15,19 @@ let guessMatch = [];
 let winCount = 0;
 let lossCount = 0;
 
-//get elements by id
+//elements by id
+const startNewGame = document.getElementById('start-game');
+const playAgain = document.getElementById('play-again');
+const numbers = document.querySelectorAll(".number")
 let winHistory = document.getElementById("win-history")
 let lossHistory = document.getElementById("loss-history")
+let currentGuessDisplay = document.getElementById("current-guess")
 let previousGuessesDisplay = document.getElementById("previous-guesses")
 let previousMatchesDisplay = document.getElementById("previous-matches")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
-playAgain.addEventListener('click', startGame)
+playAgain.addEventListener('click', startGame);
 for (let number of numbers){
     let guess = number.innerHTML
     number.addEventListener('click', () => guessAnswer(guess));
@@ -35,6 +36,17 @@ for (let number of numbers){
 //functions
 winHistory.innerText = localStorage.getItem("win_count")
 lossHistory.innerText = localStorage.getItem("loss_count")
+
+init()
+
+function init(){
+    $(document).ready(function(){
+        if(!Cookies.get('alert')) {
+            $('#infoModal').modal({show:true});
+            Cookies.set('alert', true);
+        }
+    })
+}
 
 async function getRandomNumbers(){
     axios.get("https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new")
@@ -52,6 +64,7 @@ function guessAnswer(guess){
     //first only allow number eventListener to work if we have randomNumbers
     if (randomNumbers.length > 0){
         currentGuess.push(parseInt(guess))
+        currentGuessDisplay.innerHTML = currentGuess.join("")
         console.log(currentGuess)
         //don't want to run the below before we hit 4 numbers in guess
         if (currentGuess.length === 4){
@@ -79,6 +92,7 @@ function resetValues(){
     guessesCount = 0;
     previousGuessesDisplay.innerHTML = previousGuesses;
     previousMatchesDisplay.innerHTML = previousMatches;
+    currentGuessDisplay.innerHTML = currentGuess;
 }
 
 function displayHistory(){
