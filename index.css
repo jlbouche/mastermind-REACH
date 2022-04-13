@@ -1,15 +1,18 @@
 #game-board{
-    margin: 40px;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .numbers{
-    margin: 0px 850px 0px 40px;
+    justify-content: center;
     cursor: pointer;
 }
 .number{
-    padding: 50px;
     align-items: center;
     border-style:outset;
+}
+.backspace{
+    align-items: center;
 }
 
 #previous-guesses {
