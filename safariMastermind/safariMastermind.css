@@ -1,3 +1,7 @@
+.container{
+    justify-content: center;
+}
+
 #game-board{
     margin: 40px;
 }
