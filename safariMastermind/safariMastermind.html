@@ -18,12 +18,7 @@
     <script defer src="safariMastermind.js"></script>
 </head>
 <body>
-    <div class="score-history">
-        <p>Games won: <span id="win-history"></span></p>
-        <p>Games lost: <span id="loss-history"></span></p>
-    </div>
     <a href="/index.html">Homepage</a>
-    <button id="start-game">Start Game</button>
     <div class="container" id="game-board">
         <h3>Previous Guesses:</h3>
         <div class="row" id="previous-guesses">
@@ -32,17 +27,28 @@
         </div>
         <h3>Current Guess: </h3>
         <div id="current-guess">Select a number to start!</div>
-    </div>
-    <div class="row text-center my-4 flex-wrap numbers">
-        <div class="col-3 py-1 number 0">0</div>
-        <div class="col-3 py-1 number 1">1</div>
-        <div class="col-3 py-1 number 2">2</div>
-        <div class="col-3 py-1 number 3">3</div>
-        <div class="w-100"></div>
-        <div class="col-3 py-1 number 4">4</div>
-        <div class="col-3 py-1 number 5">5</div>
-        <div class="col-3 py-1 number 6">6</div>
-        <div class="col-3 py-1 number 7">7</div>
+        <div class="btn-toolbar numbers" role="group" aria-label="...">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary number">0</button>
+                <button type="button" class="btn btn-outline-secondary number">1</button>
+                <button type="button" class="btn btn-outline-secondary number">2</button>
+                <button type="button" class="btn btn-outline-secondary number">3</button>
+            </div>
+        </div>
+        <div class="btn-toolbar numbers" role="group" aria-label="...">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary number">4</button>
+                <button type="button" class="btn btn-outline-secondary number">5</button>
+                <button type="button" class="btn btn-outline-secondary number">6</button>
+                <button type="button" class="btn btn-outline-secondary number">7</button>
+            </div>
+        </div>
+        <div class="btn-toolbar numbers" role="group" aria-label="...">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary" id="submit">Submit</button>
+                <button type="button" class="btn btn-outline-secondary" id="backspace">x</button>
+            </div>
+        </div>
     </div>
     <!--Modals-->
     <!--Victory Modal-->

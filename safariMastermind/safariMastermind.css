@@ -2,16 +2,6 @@
     margin: 40px;
 }
 
-.numbers{
-    margin: 0px 850px 0px 40px;
-    cursor: pointer;
-}
-.number{
-    padding: 50px;
-    align-items: center;
-    border-style:outset;
-}
-
 #previous-guesses {
     display: flex;
     justify-content: space-between;

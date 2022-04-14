@@ -26,7 +26,6 @@ let previousGuessesDisplay = document.getElementById("previous-guesses")
 let previousMatchesDisplay = document.getElementById("previous-matches")
 
 //event listeners
-startNewGame.addEventListener('click', startGame);
 playAgain.addEventListener('click', startGame);
 for (let number of numbers){
     let guess = number.innerHTML
@@ -34,9 +33,6 @@ for (let number of numbers){
 }
 
 //functions
-winHistory.innerText = localStorage.getItem("win_count")
-lossHistory.innerText = localStorage.getItem("loss_count")
-
 startGame()
 
 async function getRandomNumbers(){
