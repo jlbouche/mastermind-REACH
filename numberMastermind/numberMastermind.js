@@ -121,7 +121,7 @@ function displayHistory(){
     })
     previousMatches.forEach((elem) => {
         let matchDiv = document.createElement('div');
-        matchDiv.classList.add('col')
+        matchDiv.classList.add('col', 'previous-match')
         matchDiv.textContent = elem;
         previousMatchesDisplay.appendChild(matchDiv)
     })
