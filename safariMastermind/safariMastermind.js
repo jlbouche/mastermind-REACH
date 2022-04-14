@@ -5,7 +5,7 @@ const half = '🔴'
 const empty = '⚪'
 const animalsArr = ['🐘', '🐅', '🐆', '🦓', '🦒', '🦘', '🐍', '🦋']
 //variable values
-let randomAnimals = [];
+let randomNumbers = [];
 let guessesCount = 0;
 let currentGuess = [];
 let currentMatch = [];
@@ -43,7 +43,7 @@ function getRandomAnimals(){
 }
 
 function guessAnswer(guess){
-    //first only allow number eventListener to work if we have randomAnimals
+    //first only allow number eventListener to work if we have randomNumbers
     if (randomAnimals.length > 0){
         currentGuess.push(guess)
         currentGuessDisplay.innerHTML = currentGuess.join("")
@@ -73,7 +73,7 @@ function startGame(){
 }
 
 function resetValues(){
-    randomAnimals = []
+    randomNumbers = []
     previousGuesses = []
     previousMatches = []
     currentGuess = [];
@@ -86,11 +86,11 @@ function resetValues(){
 }
 
 function displayHistory(){
-    //conditional values in currentGuess compared to randomAnimals
+    //conditional values in currentGuess compared to randomNumbers
     randomAnimals.forEach((num, idx) => {
         if (currentGuess[idx].codePointAt(0) === num.codePointAt(0)){
             currentMatch.push(full)
-        } else if (currentGuess.includes(num.codePointAt(0))){
+        } else if (currentGuess.some((elem) => elem.codePointAt(0) === num.codePointAt(0))){
             currentMatch.push(half)
         } else {
             currentMatch.push(empty)
