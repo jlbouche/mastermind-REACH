@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Mastermind</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js" ></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="numberMastermind.css">
+    <script defer src="numberMastermind.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3>Mastermind</h3>
+        <div id="game-board">
+        </div>
+        <div class="btn-toolbar numbers" role="group" aria-label="...">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary number">0</button>
+                <button type="button" class="btn btn-outline-secondary number">1</button>
+                <button type="button" class="btn btn-outline-secondary number">2</button>
+                <button type="button" class="btn btn-outline-secondary number">3</button>
+            </div>
+        </div>
+        <div class="btn-toolbar numbers" role="group" aria-label="...">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary number">4</button>
+                <button type="button" class="btn btn-outline-secondary number">5</button>
+                <button type="button" class="btn btn-outline-secondary number">6</button>
+                <button type="button" class="btn btn-outline-secondary number">7</button>
+            </div>
+        </div>
+        <div class="btn-toolbar numbers" role="group" aria-label="...">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary" id="submit">Submit</button>
+                <button type="button" class="btn btn-outline-secondary" id="backspace">x</button>
+            </div>
+        </div>
+    </div>
+    <!--Modals-->
+
+    <!--How to Play Modal-->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h3 class="modal-title" id="infoTitle">Welcome to Mastermind!</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>
+                Welcome to this remake of the classic puzzle game Mastermind, where you try to guess your opponent's secret code before your guesses run out. This game has a twist, though: your opponent is a computer! Try to guess the 4 digit combination in 10 tries or less, otherwise it's Game Over.<br/>
+                <strong>Clues:</strong>
+                <ul style="list-style: none;">
+                    <li>⚫ means you've guessed a number in the right spot in the sequence!</li>
+                    <li>🔴 means you've guessed a number in the sequence, but in the wrong spot.</li>
+                    <li>⚪ means you've guessed a number that is not in the sequence.</li>
+                </ul>
+                Good luck!
+            </p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="start-game" data-dismiss="modal">Let's get started!!</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!--Missing numbers Modal-->
+    <div class="modal fade" id="missingNumbersModal" tabindex="-1" role="dialog" aria-labelledby="missingNumbersModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="missingNumbersModal">Not a complete guess!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                Sorry, you have to guess 4 numbers to submit your answer!
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Back to game</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!--Victory Modal-->
+    <div class="modal fade" id="victoryModal" tabindex="-1" role="dialog" aria-labelledby="victoryTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="victoryTitle">You win!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            Congratulations you mastermind, you figured out the code!
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="start-game" data-dismiss="modal">Play again?</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--Lost Modal-->
+    <div class="modal fade" id="lostModal" tabindex="-1" role="dialog" aria-labelledby="lostTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="lostTitle">You lost.</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                Sorry friend, maybe you'll win next time!
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="start-game" data-dismiss="modal">Play again?</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
