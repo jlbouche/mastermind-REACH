@@ -19,6 +19,7 @@ let lossCount = 0;
 const startNewGame = document.getElementById('start-game');
 const playAgain = document.getElementById('play-again');
 const numbers = document.querySelectorAll(".number")
+const backspace = document.getElementById("backspace");
 let winHistory = document.getElementById("win-history")
 let lossHistory = document.getElementById("loss-history")
 let currentGuessDisplay = document.getElementById("current-guess")
@@ -26,7 +27,9 @@ let previousGuessesDisplay = document.getElementById("previous-guesses")
 let previousMatchesDisplay = document.getElementById("previous-matches")
 
 //event listeners
+startNewGame.addEventListener('click', startGame);
 playAgain.addEventListener('click', startGame);
+backspace.addEventListener('click', deleteGuess);
 for (let number of numbers){
     let guess = number.innerHTML
     number.addEventListener('click', () => guessAnswer(guess));
@@ -60,6 +63,13 @@ function guessAnswer(guess){
             //check whether won/lost/continue
             checkGameState();
         }
+    }
+}
+
+function deleteGuess(){
+    if (currentGuess.length >=1){
+        currentGuess.pop();
+        currentGuessDisplay.innerHTML = currentGuess.join("")
     }
 }
 
