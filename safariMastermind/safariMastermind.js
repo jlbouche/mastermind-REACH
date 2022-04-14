@@ -3,25 +3,22 @@ const maxGuesses = 10;
 const full = '⚫'
 const half = '🔴'
 const empty = '⚪'
+const animalsArr = ['🐘', '🐅', '🐆', '🦓', '🦒', '🦘', '🐍', '🦋']
 
 //variable values
-let randomNumbers = [];
+let randomAnimals = [];
 let guessesCount = 0;
 let currentGuess = [];
 let currentMatch = [];
 let previousGuesses = [];
 let previousMatches = [];
 let guessMatch = [];
-let winCount = 0;
-let lossCount = 0;
 
 //elements by id
 const startNewGame = document.getElementById('start-game');
 const playAgain = document.getElementById('play-again');
-const numbers = document.querySelectorAll(".number")
+const animals = document.querySelectorAll(".animal")
 const backspace = document.getElementById("backspace");
-let winHistory = document.getElementById("win-history")
-let lossHistory = document.getElementById("loss-history")
 let currentGuessDisplay = document.getElementById("current-guess")
 let previousGuessesDisplay = document.getElementById("previous-guesses")
 let previousMatchesDisplay = document.getElementById("previous-matches")
@@ -30,30 +27,26 @@ let previousMatchesDisplay = document.getElementById("previous-matches")
 startNewGame.addEventListener('click', startGame);
 playAgain.addEventListener('click', startGame);
 backspace.addEventListener('click', deleteGuess);
-for (let number of numbers){
-    let guess = number.innerHTML
-    number.addEventListener('click', () => guessAnswer(guess));
-}
+animals.forEach(animal => {
+    let guess = animal.innerHTML
+    $(document).ready(function(){
+        $(animal).on('click', console.log(guess))
+    })
+})
 
 //functions
 startGame()
 
-async function getRandomNumbers(){
-    axios.get("https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new")
-        .then((response) => {
-            let data = response.data.split("");
-            let stringNumbers = data.filter(el => el !== '\n')
-            randomNumbers = stringNumbers.map(function (x){
-                return parseInt(x);
-            })
-            console.log(randomNumbers)
-        })
+async function getRandomAnimals(){
+    let shuffledAnimals = animalsArr.sort(() => 0.5 - Math.random());
+    randomAnimals = shuffledAnimals.slice(0, 4);
+    console.log(randomAnimals)
 }
 
 function guessAnswer(guess){
     //first only allow number eventListener to work if we have randomNumbers
-    if (randomNumbers.length > 0){
-        currentGuess.push(parseInt(guess))
+    if (randomAnimals.length > 0){
+        currentGuess.push(guess)
         currentGuessDisplay.innerHTML = currentGuess.join("")
         console.log(currentGuess)
         //don't want to run the below before we hit 4 numbers in guess
@@ -74,14 +67,14 @@ function deleteGuess(){
 }
 
 function startGame(){
-    //get random numbers first
-    getRandomNumbers();
+    //get random animals first
+    getRandomAnimals();
     //make sure no variables stored from last game
     resetValues();
 }
 
 function resetValues(){
-    randomNumbers = []
+    randomAnimals = []
     previousGuesses = []
     previousMatches = []
     currentGuess = [];
@@ -93,8 +86,8 @@ function resetValues(){
 }
 
 function displayHistory(){
-    //conditional values in currentGuess compared to randomNumbers
-    randomNumbers.forEach((num, idx) => {
+    //conditional values in currentGuess compared to randomAnimals
+    randomAnimals.forEach((num, idx) => {
         if (currentGuess[idx] === num){
             currentMatch.push(full)
         } else if (currentGuess.includes(num)){
@@ -128,25 +121,18 @@ function displayHistory(){
 }
 
 function checkGameState(){
-    console.log(currentGuess, randomNumbers)
+    console.log(currentGuess, randomAnimals)
     //first check if guess matches--as game is over with win until max is reached
-    if (currentGuess.every((val, idx) => val === randomNumbers[idx])){
+    if (currentGuess.every((val, idx) => val === randomAnimals[idx])){
         //show victory modal
         $('#victoryModal').modal({show:true});
-        //increase winCount by 1
-        winCount++;
-        // //update localStorage for updated winCount
-        localStorage.setItem("win_count", winCount)
+
         //reset values for new game
         resetValues();
     //next check if maxGuesses reached--as that is the other condition that ends the game
     } else if (guessesCount === maxGuesses){
         //show lost modal
         $('#lostModal').modal({show:true});
-        //increase lossCount by 1
-        lossCount++;
-        // //update localStorage for updated lossCount
-        localStorage.setItem("loss_count", lossCount)
         //reset values for new game
         resetValues();
     //finally, when guess is made that doesn't match but also haven't reached maxGuesses
