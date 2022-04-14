@@ -34,19 +34,7 @@ for (let number of numbers){
 }
 
 //functions
-winHistory.innerText = localStorage.getItem("win_count")
-lossHistory.innerText = localStorage.getItem("loss_count")
-
-init()
-
-function init(){
-    $(document).ready(function(){
-        if(!Cookies.get('alert')) {
-            $('#infoModal').modal({show:true});
-            Cookies.set('alert', true);
-        }
-    })
-}
+startGame();
 
 async function getRandomNumbers(){
     axios.get("https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new")

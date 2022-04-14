@@ -21,31 +21,39 @@
 <body>
     <div class="container">
         <h3>Mastermind</h3>
+        <a href="/index.html">Homepage</a>
         <div id="game-board">
-        </div>
-        <div class="btn-toolbar numbers" role="group" aria-label="...">
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary number">0</button>
-                <button type="button" class="btn btn-outline-secondary number">1</button>
-                <button type="button" class="btn btn-outline-secondary number">2</button>
-                <button type="button" class="btn btn-outline-secondary number">3</button>
+            <h3>Previous Guesses:</h3>
+            <div class="row" id="previous-guesses">
+            </div>
+            <div class="row" id="previous-matches">
+            </div>
+            <h3>Current Guess: </h3>
+            <div id="current-guess">Select a number to start!</div>
+            <div class="btn-toolbar numbers" role="group" aria-label="...">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary number">0</button>
+                    <button type="button" class="btn btn-outline-secondary number">1</button>
+                    <button type="button" class="btn btn-outline-secondary number">2</button>
+                    <button type="button" class="btn btn-outline-secondary number">3</button>
+                </div>
+            </div>
+            <div class="btn-toolbar numbers" role="group" aria-label="...">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary number">4</button>
+                    <button type="button" class="btn btn-outline-secondary number">5</button>
+                    <button type="button" class="btn btn-outline-secondary number">6</button>
+                    <button type="button" class="btn btn-outline-secondary number">7</button>
+                </div>
+            </div>
+            <div class="btn-toolbar numbers" role="group" aria-label="...">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary" id="submit">Submit</button>
+                    <button type="button" class="btn btn-outline-secondary" id="backspace">x</button>
+                </div>
             </div>
         </div>
-        <div class="btn-toolbar numbers" role="group" aria-label="...">
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary number">4</button>
-                <button type="button" class="btn btn-outline-secondary number">5</button>
-                <button type="button" class="btn btn-outline-secondary number">6</button>
-                <button type="button" class="btn btn-outline-secondary number">7</button>
-            </div>
         </div>
-        <div class="btn-toolbar numbers" role="group" aria-label="...">
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary" id="submit">Submit</button>
-                <button type="button" class="btn btn-outline-secondary" id="backspace">x</button>
-            </div>
-        </div>
-    </div>
     <!--Modals-->
 
     <!--How to Play Modal-->
@@ -77,7 +85,7 @@
         </div>
     </div>
 
-    <!--Missing numbers Modal-->
+    <!-- Missing numbers Modal -->
     <div class="modal fade" id="missingNumbersModal" tabindex="-1" role="dialog" aria-labelledby="missingNumbersModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -111,7 +119,7 @@
             Congratulations you mastermind, you figured out the code!
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="start-game" data-dismiss="modal">Play again?</button>
+            <button type="button" class="btn btn-primary" id="play-again" data-dismiss="modal">Play again?</button>
             </div>
         </div>
         </div>
