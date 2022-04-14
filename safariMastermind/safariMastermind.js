@@ -4,7 +4,6 @@ const full = '⚫'
 const half = '🔴'
 const empty = '⚪'
 const animalsArr = ['🐘', '🐅', '🐆', '🦓', '🦒', '🦘', '🐍', '🦋']
-
 //variable values
 let randomAnimals = [];
 let guessesCount = 0;
@@ -17,9 +16,10 @@ let guessMatch = [];
 //elements by id
 const startNewGame = document.getElementById('start-game');
 const playAgain = document.getElementById('play-again');
-const animals = document.querySelectorAll(".animal")
-const backspace = document.getElementById("backspace");
+const numbers = document.querySelectorAll(".number")
+let backspace = document.getElementById("backspace")
 let currentGuessDisplay = document.getElementById("current-guess")
+let guessesRemainingDisplay = document.getElementById("guesses-remaining")
 let previousGuessesDisplay = document.getElementById("previous-guesses")
 let previousMatchesDisplay = document.getElementById("previous-matches")
 
@@ -27,24 +27,23 @@ let previousMatchesDisplay = document.getElementById("previous-matches")
 startNewGame.addEventListener('click', startGame);
 playAgain.addEventListener('click', startGame);
 backspace.addEventListener('click', deleteGuess);
-animals.forEach(animal => {
-    let guess = animal.innerHTML
-    $(document).ready(function(){
-        $(animal).on('click', console.log(guess))
-    })
+numbers.forEach((number) => {
+    let guess = number.innerHTML
+    number.addEventListener('click', () => guessAnswer(guess));
 })
 
 //functions
-startGame()
+startGame();
+guessesRemainingDisplay.innerHTML = maxGuesses - guessesCount
 
-async function getRandomAnimals(){
+function getRandomAnimals(){
     let shuffledAnimals = animalsArr.sort(() => 0.5 - Math.random());
     randomAnimals = shuffledAnimals.slice(0, 4);
     console.log(randomAnimals)
 }
 
 function guessAnswer(guess){
-    //first only allow number eventListener to work if we have randomNumbers
+    //first only allow number eventListener to work if we have randomAnimals
     if (randomAnimals.length > 0){
         currentGuess.push(guess)
         currentGuessDisplay.innerHTML = currentGuess.join("")
@@ -67,7 +66,7 @@ function deleteGuess(){
 }
 
 function startGame(){
-    //get random animals first
+    //get random numbers first
     getRandomAnimals();
     //make sure no variables stored from last game
     resetValues();
@@ -83,14 +82,15 @@ function resetValues(){
     previousGuessesDisplay.innerHTML = previousGuesses;
     previousMatchesDisplay.innerHTML = previousMatches;
     currentGuessDisplay.innerHTML = currentGuess;
+    guessesRemainingDisplay.innerHTML = maxGuesses - guessesCount
 }
 
 function displayHistory(){
     //conditional values in currentGuess compared to randomAnimals
     randomAnimals.forEach((num, idx) => {
-        if (currentGuess[idx] === num){
+        if (currentGuess[idx].codePointAt(0) === num.codePointAt(0)){
             currentMatch.push(full)
-        } else if (currentGuess.includes(num)){
+        } else if (currentGuess.includes(num.codePointAt(0))){
             currentMatch.push(half)
         } else {
             currentMatch.push(empty)
@@ -114,7 +114,7 @@ function displayHistory(){
     })
     previousMatches.forEach((elem) => {
         let matchDiv = document.createElement('div');
-        matchDiv.classList.add('col')
+        matchDiv.classList.add('col', 'previous-match')
         matchDiv.textContent = elem;
         previousMatchesDisplay.appendChild(matchDiv)
     })
@@ -138,5 +138,6 @@ function checkGameState(){
     //finally, when guess is made that doesn't match but also haven't reached maxGuesses
     } else {
         displayHistory();
+        guessesRemainingDisplay.innerHTML = maxGuesses - guessesCount
     }
 }
