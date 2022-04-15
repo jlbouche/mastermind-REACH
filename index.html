@@ -31,6 +31,63 @@
                 <a class="nav-item nav-link" href="/safariMastermind/safariMastermind.html">Safari</a>
             </div>
         </div>
+        <span class="navbar-text" data-toggle="modal" data-target="#infoModal"><i class="bi bi-question-square" style="font-size: 2rem;"></i></span>
     </nav>
+    <div class="container">
+        <center>
+            <h1>Welcome to Mastermind!</h1>
+            <h4>(Don't worry, we're here to help! Hover over Jarvis below or click the '?' icon for help.)</h4>
+        </center>
+        <div class="row">
+            <div class="col card-container">
+                <div class="card-flip">
+                    <div class="card front">
+                        <img src="https://images.vexels.com/media/users/3/228519/isolated/preview/838937e1136b02dc393cf46b507d8605-cute-robot-character.png" class="card-img-top img-fluid" id="jarvis-image">
+                        <div class="card-body">
+                            <h3 class="card-title">Jarvis</h3>
+                            <p class="card-text">"Whether we are based on carbon or on silicon<br> makes no fundamental difference; we should each be treated<br> with appropriate respect."</p>
+                        </div>
+                    </div>
+                    <div class="card back">
+                        <div class="card-body">
+                            <img src="https://miro.medium.com/max/700/0*4xohKyVpcqZPmT9y.png" class="card-img-top img-fluid" id="mastermind-image">
+                            <h3 class="card-title">Jarvis: The Code Maker</h3>
+                            <p class="card-text">
+                                When you start the game, Jarvis carefully selects a random sequence of 4 symbols, depending on the game mode you select in the menu. Numbers, animals, or the classic: colors. Each time you input a guess Jarvis updates his notes and lets you know if you got a symbol right, if it is in the sequence but not in the right spot, or if it's not in the sequence at all. However, you have only 10 tries to figure out his secret code. Jarvis is quite the helpful fellow, though: not only will he give you the aforementioned clues, he'll also let you know if your guess is a repeat of previous guesses. Thanks Jarvis! 
+                                <br>
+                                Well, what are you waiting for? Choose a category to start your game! :)
+                            </p>
+                            <a class="btn btn-info" href="/numberMastermind/numberMastermind.html" role="button">Numbers</a>
+                            <a class="btn btn-success" href="/safariMastermind/safariMastermind.html" role="button">Animals</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--How to Play Modal-->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h2 class="modal-title" id="infoTitle">How to Play</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>Guess the 4 length combination in 10 tries or less by selecting a symbol on the numberpad. Once the 4th symbol is guessed, our computer will automatically compare your answer with the <strong>Secret Combination</strong>™!</p>
+                <h4>Example:</h4>
+                <p>1 2 3 4<br>🔴⚫⚪⚪</p>
+                <p>This means that out of the guessed numbers 1, 2, 3, and 4, one number was in the right spot, one number is in the Secret Combination but not in the right spot, and two of the numbers are not in the combination at all.</p>
+                <p>Best of luck! And don't worry, the fate of humanity isn't riding on this game... we hope.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">Let's get started!!</button>
+            </div>
+        </div>
+        </div>
+    </div>
 </body>
 </html>

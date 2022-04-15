@@ -1,0 +1,47 @@
+body{
+    background-color: #EEEEEE;
+}
+
+.container{
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.card-container {
+    perspective: 700px;
+}
+
+.card-flip, .card-container {
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+}
+
+.card-flip div {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.back {
+    justify-content: center;
+    align-items: center;
+    grid-area: frontAndBack;
+    transform: rotateY(-180deg);
+}
+
+.card-container:hover .card-flip {
+    transform: rotateY(180deg);
+}
+
+.card-flip {
+    display: grid; grid-template: 1fr / 1fr;
+    grid-template-areas: "frontAndBack";
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+}
+
+.front {
+    justify-content: center;
+    align-items: center;
+    grid-area: frontAndBack;
+}
