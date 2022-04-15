@@ -5,6 +5,8 @@ attempt to guess the 4 number combinations, the computer will provide feedback w
 player had guess a number correctly, or/and a number and digit correctly. A player must guess
 the right number combinations within 10 attempts to win the game.
 
+[Play it now!](https://jlbouche.github.io/mastermind-REACH/)
+
 ## Game Rules/Reqs
 
 * At the start of the game the computer will randomly select a pattern of four different
