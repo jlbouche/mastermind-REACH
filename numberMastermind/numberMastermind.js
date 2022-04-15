@@ -55,10 +55,15 @@ function guessAnswer(guess){
         console.log(currentGuess)
         //don't want to run the below before we hit 4 numbers in guess
         if (currentGuess.length === 4){
-            //increase number of guesses by 1
-            guessesCount++;
-            //check whether won/lost/continue
-            checkGameState();
+            if (previousGuesses.includes(currentGuess.join(''))){
+                alert('You already guessed that!')
+                deleteGuess()
+            } else {
+                //increase number of guesses by 1
+                guessesCount++;
+                //check whether won/lost/continue
+                checkGameState();
+            }
         }
     }
 }
