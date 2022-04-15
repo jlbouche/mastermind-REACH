@@ -49,19 +49,26 @@
                             <h3>Current Guess: </h3>
                             <div id="current-guess"></div>
                             <div class="btn-toolbar numbers" role="group" aria-label="...">
+                                <div class="btn-group">
                                     <button type="button" class="btn btn-outline-secondary number">0</button>
                                     <button type="button" class="btn btn-outline-secondary number">1</button>
                                     <button type="button" class="btn btn-outline-secondary number">2</button>
+                                </div>
                             </div>
                             <div class="btn-toolbar numbers" role="group" aria-label="...">
+                                <div class="btn-group">
                                     <button type="button" class="btn btn-outline-secondary number">3</button>
                                     <button type="button" class="btn btn-outline-secondary number">4</button>
                                     <button type="button" class="btn btn-outline-secondary number">5</button>
+                                </div>
                             </div>
                             <div class="btn-toolbar numbers" role="group" aria-label="...">
+                                <div class="btn-group">
                                     <button type="button" class="btn btn-outline-secondary number">6</button>
                                     <button type="button" class="btn btn-outline-secondary number">7</button>
                                     <button type="button" class="btn btn-outline-secondary" id="backspace"><i class="bi bi-backspace"></i></button>
+                            
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -118,16 +125,16 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="victoryTitle">You win!</h5>
+            <h2 class="modal-title" id="victoryTitle">You win!</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-            Congratulations you mastermind, you figured out the code!
+                Congratulations you mastermind, you figured out the code!
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="play-again" data-dismiss="modal">Play again?</button>
+            <button type="button" class="btn btn-success" id="play-again" data-dismiss="modal">Play again?</button>
             </div>
         </div>
         </div>
@@ -137,7 +144,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="lostTitle">You lost.</h5>
+            <h2 class="modal-title" id="lostTitle">You lost. :(</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

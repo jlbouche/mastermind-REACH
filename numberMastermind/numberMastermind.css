@@ -1,3 +1,8 @@
+body {
+    background-color: #E7DBD6;
+    color: #5A5D59
+}
+
 #game-board{
     margin: 40px;
 }
@@ -17,4 +22,8 @@
 
 #current-guess{
     font-size: 2.5em;
+}
+
+#previous-guesses-matches{
+    font-size: 1.75em;
 }

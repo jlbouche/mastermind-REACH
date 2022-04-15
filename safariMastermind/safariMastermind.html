@@ -37,7 +37,7 @@
         <div id="game-board">
             <div class="row">
                 <div class="col">
-                    <h3>Previous Guesses:</h3>
+                    <h3>Previous Guesses:</h3><br>
                     <div class="row" id="previous-guesses-matches">
                     </div>
                 </div>
@@ -123,17 +123,19 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="victoryTitle">You win!</h5>
+            <h2 class="modal-title" id="victoryTitle">You win!</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-            Congratulations you mastermind, you figured out the code!
+                Congratulations you mastermind, you figured out the code! Feel free to share the news with all of your friends: <br>
+                <p>
+                    <a href="http://twitter.com/intent/tweet?text=I'm officially a mastermind! See if you can beat this game: " onclick="window.open(this.href, 'twitterwindow','left=20,top=20,width=600,height=300,toolbar=0,resizable=1'); return false;"><i class="bi bi-twitter"></i>Tweet this</a>
+                </p>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="start-game" data-dismiss="modal">Play again?</button>
+            <button type="button" class="btn btn-success" id="play-again" data-dismiss="modal">Play again?</button>
             </div>
         </div>
         </div>
@@ -143,7 +145,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="lostTitle">You lost.</h5>
+            <h2 class="modal-title" id="lostTitle">You lost. :(</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -152,8 +154,7 @@
                 Sorry friend, maybe you'll win next time!
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="play-again" data-dismiss="modal">Play again?</button>
+            <button type="button" class="btn btn-primary" id="start-game" data-dismiss="modal">Play again?</button>
             </div>
         </div>
         </div>
