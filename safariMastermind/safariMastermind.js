@@ -51,7 +51,7 @@ function guessAnswer(guess){
         //don't want to run the below before we hit 4 numbers in guess
         if (currentGuess.length === 4){
             if (previousGuesses.includes(currentGuess.join(''))){
-                alert('You already guessed that!')
+                $('#alreadyGuessedModal').modal({show:true});
                 deleteGuess()
             } else {
                 //increase number of guesses by 1
