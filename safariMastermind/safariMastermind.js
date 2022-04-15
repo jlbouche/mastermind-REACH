@@ -83,11 +83,11 @@ function resetValues(){
     previousMatches = []
     currentGuess = [];
     currentMatch = [];
+    previousGuessesMatches = new Map()
     guessesCount = 0;
-    previousGuessesDisplay.innerHTML = previousGuesses;
-    previousMatchesDisplay.innerHTML = previousMatches;
     currentGuessDisplay.innerHTML = currentGuess;
     guessesRemainingDisplay.innerHTML = maxGuesses - guessesCount
+    previousGuessesMatchesDisplay.innerHTML = ''
 }
 
 function displayHistory(){
