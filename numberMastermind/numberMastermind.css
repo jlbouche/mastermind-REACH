@@ -2,20 +2,10 @@
     margin: 40px;
 }
 
-#previous-guesses {
-    display: flex;
-    justify-content: space-between;
+.number, #backspace {
+    font-size: 1.25em;
 }
 
-.previous-guess {
-    flex-wrap: wrap;
-}
-
-#previous-matches{
-    display: flex;
-}
-
-.previous-match {
-    flex-direction: column;
-    flex-wrap: wrap;
+.btn-toolbar {
+    font-size: 2em;
 }

@@ -106,6 +106,7 @@ function displayHistory(){
     previousGuesses.push(currentGuess.join(''));
     previousMatches.push(currentMatch.join(''));
     previousGuessesMatchesDisplay.innerHTML = ''
+    currentGuessDisplay.innerHTML = ''
     //reset currentGuess/Match for next guess input
     currentGuess = [];
     currentMatch = [];
