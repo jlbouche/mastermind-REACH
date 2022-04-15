@@ -7,6 +7,8 @@ the right number combinations within 10 attempts to win the game.
 
 [Play it now!](https://jlbouche.github.io/mastermind-REACH/)
 
+** Note for cloning: due to how the website is hosted on GitHub Pages, you will have to change the url path in the navbar to remove /mastermind-REACH/ (i.e. change to `<a class="nav-item nav-link" href="/safariMastermind/safariMastermind.html">Safari</a>`). 
+
 ## Game Rules/Reqs
 
 * At the start of the game the computer will randomly select a pattern of four different
