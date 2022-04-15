@@ -20,7 +20,7 @@ as feedback:
 
 ## UI Reqs
 
-* Aility to guess the combinations of 4 numbers
+* Ability to guess the combinations of 4 numbers
 * Ability to view the history of guesses and their feedback
 * The number of guesses remaining is displayed
 
@@ -36,5 +36,4 @@ as feedback:
 
 ## Implementation
 
-TBA
-
+Javascript/HTML/CSS/Bootstrap/Random.org's API
