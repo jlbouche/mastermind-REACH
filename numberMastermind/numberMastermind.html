@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js" ></script>
@@ -31,15 +32,14 @@
                 <a class="nav-item nav-link" href="/safariMastermind/safariMastermind.html">Safari</a>
             </div>
         </div>
+        <span class="navbar-text" data-toggle="modal" data-target="#infoModal"><i class="bi bi-question-square" style="font-size: 2rem;"></i></span>
     </nav>
     <div class="container">
         <div id="game-board">
             <h2>Numbers Mastermind</h2>
             <h3>Guesses Remaining: <span id="guesses-remaining"></span></h3>
             <h3>Previous Guesses:</h3>
-            <div class="row" id="previous-guesses">
-            </div>
-            <div class="row" id="previous-matches">
+            <div class="row" id="previous-guesses-matches">
             </div>
             <h3>Current Guess: </h3>
             <div id="current-guess">Select a number to start!</div>
@@ -67,7 +67,30 @@
         </div>
         </div>
     <!--Modals-->
-
+    <!--How to Play Modal-->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h2 class="modal-title" id="infoTitle">How to Play</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>Guess the 4 digit combination in 10 tries or less by clicking on a number in our numberpad. Once the 4th number is guessed, our computer will automatically compare your answer with the <strong>Secret Combination</strong>™!</p>
+                <h4>Example:</h4>
+                <p>1 2 3 4<br>🔴⚫⚪⚪</p>
+                <p>This means that out of the guessed numbers 1, 2, 3, and 4, one number was in the right spot, one number is in the Secret Combination but not in the right spot, and two of the numbers are not in the combination at all.</p>
+                <p>Best of luck! And don't worry, the fate of humanity isn't riding on this game... we hope.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">Let's get started!!</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!-- Missing numbers Modal -->
     <div class="modal fade" id="missingNumbersModal" tabindex="-1" role="dialog" aria-labelledby="missingNumbersModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -11,6 +11,7 @@ let currentGuess = [];
 let currentMatch = [];
 let previousGuesses = [];
 let previousMatches = [];
+let previousGuessesMatches = new Map();
 let guessMatch = [];
 
 //elements by id
@@ -20,8 +21,7 @@ const numbers = document.querySelectorAll(".number")
 let backspace = document.getElementById("backspace")
 let currentGuessDisplay = document.getElementById("current-guess")
 let guessesRemainingDisplay = document.getElementById("guesses-remaining")
-let previousGuessesDisplay = document.getElementById("previous-guesses")
-let previousMatchesDisplay = document.getElementById("previous-matches")
+let previousGuessesMatchesDisplay = document.getElementById("previous-guesses-matches")
 
 //event listeners
 startNewGame.addEventListener('click', startGame);
@@ -84,10 +84,10 @@ function resetValues(){
     currentGuess = [];
     currentMatch = [];
     guessesCount = 0;
-    previousGuessesDisplay.innerHTML = previousGuesses;
-    previousMatchesDisplay.innerHTML = previousMatches;
+    previousGuessesMatches = new Map()
     currentGuessDisplay.innerHTML = currentGuess;
     guessesRemainingDisplay.innerHTML = maxGuesses - guessesCount
+    previousGuessesMatchesDisplay.innerHTML = ''
 }
 
 function displayHistory(){
@@ -106,23 +106,20 @@ function displayHistory(){
     previousGuesses.push(currentGuess.join(''));
     previousMatches.push(currentMatch.join(''));
     //reset currentGuess/Match for next guess input
+    previousGuessesMatchesDisplay.innerHTML = ''
+    currentGuessDisplay.innerHTML = ''
     currentGuess = [];
     currentMatch = [];
-    //change display to show updated previousGuesses and Matches
-    previousGuessesDisplay.innerHTML = ''
-    previousMatchesDisplay.innerHTML = ''
-    previousGuesses.forEach((elem) => {
-        let guessDiv = document.createElement('div');
-        guessDiv.classList.add('col')
-        guessDiv.textContent = elem;
-        previousGuessesDisplay.appendChild(guessDiv)
+    previousGuesses.forEach((elem, idx) => {
+        previousGuessesMatches.set(elem, previousMatches[idx]);
     })
-    previousMatches.forEach((elem) => {
-        let matchDiv = document.createElement('div');
-        matchDiv.classList.add('col', 'previous-match')
-        matchDiv.textContent = elem;
-        previousMatchesDisplay.appendChild(matchDiv)
-    })
+    console.log(previousGuessesMatches)
+    for (const [guess, match] of previousGuessesMatches.entries()) {
+        let prevGuessMatchDiv = document.createElement('div');
+        prevGuessMatchDiv.classList.add('col')
+        prevGuessMatchDiv.innerHTML = `${guess} <br> ${match}`
+        previousGuessesMatchesDisplay.appendChild(prevGuessMatchDiv)
+    } 
 }
 
 function checkGameState(){
